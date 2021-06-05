@@ -23,6 +23,7 @@ public class ex17 {
             String volume_in = input.nextLine();
             System.out.print("How much time (hours) has passed since your last drink? ");
             String time_in = input.nextLine();
+            System.out.print("\n");
 
             try {
                 double weight =  Double.parseDouble(weight_in);
@@ -31,37 +32,30 @@ public class ex17 {
                 double volume = Double.parseDouble(volume_in);
                 double time = Double.parseDouble(time_in);
                 double A = drink_num * volume;
+                double r = 0;
 
                 if (gender != 1 && gender != 2) {
-                    System.out.println("\nInvalid number for gender. When prompted, press 1 for male " +
+                    System.out.println("Invalid number for gender. When prompted, press 1 for male " +
                                        "or 2 for female. Try again.\n");
                     correct = false;
+                    continue;
                 }
-
                 if (gender == 1) {
-                    double r = 0.73;
-                    double BAC = (A * 5.14 / weight * r) - .015 * time;
-
-                    System.out.printf("\nYour BAC is %.2f.\n", BAC);
-                    if (BAC >= .08) System.out.println("It is not legal for you to drive.");
-                    else if (BAC < .08) System.out.println("It is legal for you to drive.");
-
-                    correct = true;
+                    r = 0.73;
                 }
-
                 if (gender == 2) {
-                    double r = 0.66;
-                    double BAC = (A * 5.14 / weight * r) - .015 * time;
-
-                    System.out.printf("\nYour BAC is %.2f.\n", BAC);
-                    if (BAC >= .08) System.out.println("It is not legal for you to drive.");
-                    else if (BAC < .08) System.out.println("It is legal for you to drive.");
-
-                    correct = true;
+                    r = 0.66;
                 }
+
+                double BAC = (A * 5.14 / weight * r) - .015 * time;
+                System.out.printf("Your BAC is %.2f.\n", BAC);
+                if (BAC >= .08) System.out.println("It is not legal for you to drive.");
+                else if (BAC < .08) System.out.println("It is legal for you to drive.");
+
+                correct = true;
             }
             catch (Exception e) {
-                System.out.println("\nPlease only enter numeric values. Try again.\n");
+                System.out.println("Please only enter numeric values. Try again.\n");
                 correct = false;
             }
         }
