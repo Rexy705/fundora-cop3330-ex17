@@ -17,10 +17,8 @@ public class ex17 {
             String weight_in = input.nextLine();
             System.out.print("What is your gender?\nPress 1 for male; 2 for female. ");
             String gender_in = input.nextLine();
-            System.out.print("How many drinks have you had? ");
-            String drink_num_in = input.nextLine();
-            System.out.print("What was the alcohol volume (as a percent) of the drinks consumed? ");
-            String volume_in = input.nextLine();
+            System.out.print("What was your total alcohol consumption (in ounces)? " );
+            String A_in = input.nextLine();
             System.out.print("How much time (hours) has passed since your last drink? ");
             String time_in = input.nextLine();
             System.out.print("\n");
@@ -28,10 +26,8 @@ public class ex17 {
             try {
                 double weight =  Double.parseDouble(weight_in);
                 double gender = Double.parseDouble(gender_in);
-                double drink_num = Double.parseDouble(drink_num_in);
-                double volume = Double.parseDouble(volume_in);
+                double A = Double.parseDouble(A_in);
                 double time = Double.parseDouble(time_in);
-                double A = drink_num * volume;
                 double r = 0;
 
                 if (gender != 1 && gender != 2) {
@@ -48,7 +44,7 @@ public class ex17 {
                 }
 
                 double BAC = (A * 5.14 / weight * r) - .015 * time;
-                System.out.printf("Your BAC is %.2f.\n", BAC);
+                System.out.printf("Your BAC is %.6f.\n", BAC);
                 if (BAC >= .08) System.out.println("It is not legal for you to drive.");
                 else if (BAC < .08) System.out.println("It is legal for you to drive.");
 
